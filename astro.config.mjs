@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://prasetyatour.com",
+  site: "https://prasetyajourney.vercel.app",
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
