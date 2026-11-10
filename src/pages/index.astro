@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import Hero from "@/components/Hero.astro";
+import Statement from "@/components/Statement.astro";
+import About from "@/components/About.astro";
+import Catalog from "@/components/Catalog.astro";
+import Team from "@/components/Team.astro";
+import Steps from "@/components/Steps.astro";
+import Testimonials from "@/components/Testimonials.astro";
+import Faq from "@/components/Faq.astro";
+import CtaSection from "@/components/CtaSection.astro";
+import Instagram from "@/components/Instagram.astro";
+import Footer from "@/components/Footer.astro";
+import { images } from "@/data/site";
+---
+
+<BaseLayout
+  title="Paket Wisata & Sewa Bus Pariwisata Eksekutif | PT Prasetya Tour Sidoarjo"
+  description="PT Prasetya Tour and Travel — biro wisata & transportasi eksklusif Sidoarjo. Paket Study Tour, wisata domestik, sewa bus pariwisata Jetbus 5 & Avante Luxury ke Bromo, Bali, Yogyakarta, Lombok & seluruh Nusantara. Legalitas sah Kemenkumham RI."
+>
+  <Header />
+
+  <main id="main" class="relative z-10 w-full">
+    <!-- Tekstur atmosfer latar seluruh halaman -->
+    <div
+      class="pointer-events-none fixed inset-0 z-0 select-none overflow-hidden opacity-30"
+      aria-hidden="true"
+    >
+      <Image
+        src={images.aerialMist}
+        alt="Tekstur atmosfer kabut tipis aerial di atas perbukitan Indonesia"
+        widths={[720, 1376]}
+        sizes="100vw"
+        format="webp"
+        quality={60}
+        loading="eager"
+        class="h-full w-full object-cover object-top opacity-30 mix-blend-multiply saturate-150 contrast-110"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/40 via-[#faf9f6]/70 to-[#faf9f6]"
+      >
+      </div>
+    </div>
+
+    <Hero />
+    <Statement />
+    <About />
+    <Catalog />
+    <Team />
+    <Steps />
+    <Testimonials />
+    <Faq />
+    <CtaSection />
+    <Instagram />
+  </main>
+  <Footer />
+</BaseLayout>

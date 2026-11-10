@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+  fill?: boolean;
+  size?: string;
+}
+
+const { name, class: className = "", fill = false, size = "" } = Astro.props;
+---
+
+<span
+  class:list={[
+    "material-symbols-outlined select-none",
+    fill && "icon-fill",
+    size,
+    className,
+  ]}
+  aria-hidden="true"
+>{name}</span
+>

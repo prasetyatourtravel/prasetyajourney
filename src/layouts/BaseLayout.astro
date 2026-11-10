@@ -1,0 +1,171 @@
+---
+import "@/styles/global.css";
+import { site, faqs, social } from "@/data/site";
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { title, description = site.description, noindex = false } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/og/og-image.jpg", Astro.site);
+const ogAlt = `${site.name} — paket wisata & sewa bus pariwisata eksekutif di Sidoarjo`;
+
+const robotsContent = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const schemaOrg = [
+  {
+    "@context": "https://schema.org",
+    "@id": `${Astro.site}#organization`,
+    "@type": "TravelAgency",
+    name: site.name,
+    alternateName: site.shortName,
+    url: canonical,
+    slogan: site.tagline,
+    description: site.shortDescription,
+    telephone: site.phoneIntl,
+    email: site.email,
+    image: `${Astro.site}og/og-image.jpg`,
+    logo: {
+      "@type": "ImageObject",
+      "@id": `${Astro.site}#logo`,
+      url: `${Astro.site}logos/completelogo_lightmode.svg`,
+      caption: site.name,
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: `${site.address.street}, ${site.address.district}`,
+      addressLocality: site.address.city,
+      addressRegion: site.address.region,
+      postalCode: site.address.postalCode,
+      addressCountry: site.address.country,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "08:00",
+      closes: "20:00",
+    },
+    priceRange: "RpRp",
+    areaServed: {
+      "@type": "Country",
+      name: "Indonesia",
+    },
+    sameAs: [social.instagram],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${Astro.site}#website`,
+    name: site.name,
+    url: canonical,
+    inLanguage: "id-ID",
+    publisher: { "@id": `${Astro.site}#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    name: title,
+    url: canonical,
+    description,
+    inLanguage: "id-ID",
+    isPartOf: { "@id": `${Astro.site}#website` },
+    about: { "@id": `${Astro.site}#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${canonical}#faq`,
+    isPartOf: { "@id": `${canonical}#webpage` },
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  },
+];
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="theme-color" content="#faf9f6" />
+    <meta name="color-scheme" content="light" />
+    <meta name="author" content={site.name} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogAlt} />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/favicon.png"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  </head>
+  <body
+    class="relative min-h-screen bg-[#faf9f6] font-sans text-slate-800 antialiased"
+  >
+    <a
+      href="#main"
+      class="sr-only z-[100] rounded-full bg-slate-900 px-5 py-3 font-semibold text-white focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+    >
+      Langsung ke konten utama
+    </a>
+    <slot />
+  </body>
+</html>

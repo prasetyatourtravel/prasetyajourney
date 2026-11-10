@@ -1,0 +1,84 @@
+---
+import { pillars, site } from "@/data/site";
+import Icon from "@/components/Icon.astro";
+---
+
+<section class="relative w-full py-24" id="tentang">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    <div class="mb-16 max-w-3xl">
+      <span
+        class="mb-3 block text-xs font-semibold tracking-[0.25em] text-brand-700 uppercase"
+      >
+        Dedikasi &amp; Integritas
+      </span>
+      <h2
+        class="text-3xl font-medium leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+      >
+        Mengenal
+        <span class="font-serif font-normal italic text-brand-700"
+          >{site.shortName}.</span
+        ><br />
+        Kenyamanan berlibur tanpa rasa cemas, dari Sidoarjo ke seluruh
+        pelosok Nusantara.
+      </h2>
+      <p
+        class="mt-6 text-base font-light leading-relaxed text-slate-600 sm:text-lg"
+      >
+        Lahir di Sidoarjo dengan visi mengangkat standar pariwisata Nusantara
+        melalui sinergi ketepatan waktu, keramahan lokal, dan jaminan
+        keselamatan bertaraf premium. Kami menyadari bahwa esensi bepergian
+        bukan sekadar tiba di tempat tujuan, melainkan setiap jengkal kenangan
+        yang tercipta dengan rasa tenang, tertib, dan teristimewa.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 pt-4 md:grid-cols-2 lg:grid-cols-4">
+      {
+        pillars.map((pillar) => (
+          <div class="glass-card-subtle rounded-2xl p-8 border border-slate-200/90 transition-all duration-300 hover:border-brand-500/40 hover:bg-white">
+            <span class="mb-4 block font-serif text-xl font-normal text-brand-700">
+              {pillar.index}
+            </span>
+            <h3 class="mb-2 text-base font-semibold text-slate-900">
+              {pillar.title}
+            </h3>
+            <p class="text-sm leading-relaxed font-light text-slate-600">
+              {pillar.description}
+            </p>
+            <span class="mt-6 inline-block text-[11px] font-medium tracking-widest text-slate-400 uppercase">
+              {pillar.tag}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:flex-row sm:items-center"
+    >
+      <div class="flex items-center gap-4">
+        <div
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-700 text-white"
+        >
+          <Icon name="verified" size="text-xl" />
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-900">
+            Operasional Resmi Berbadan Hukum PT — Kemenkumham RI
+          </p>
+          <p class="text-xs text-slate-600">
+            Terdaftar sah sebagai perseroan terbatas biro perjalanan wisata
+            berizin komersial di Indonesia.
+          </p>
+        </div>
+      </div>
+      <a
+        class="flex shrink-0 items-center gap-1.5 text-xs font-semibold tracking-wider text-brand-700 uppercase transition-colors hover:text-brand-800"
+        href="#kontak"
+      >
+        <span>Verifikasi Legalitas</span>
+        <Icon name="east" size="text-sm" />
+      </a>
+    </div>
+  </div>
+</section>

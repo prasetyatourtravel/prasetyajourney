@@ -1,0 +1,64 @@
+---
+import { site, navLinks, wa, waGreeting } from "@/data/site";
+import Icon from "@/components/Icon.astro";
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-50 px-4 py-3 transition-all duration-300 sm:px-8 sm:py-5"
+>
+  <div
+    class="glass-panel mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/80 px-4 py-2.5 shadow-sm transition-all duration-300 sm:px-8 sm:py-3.5"
+  >
+    <a
+      class="group flex items-center py-0.5"
+      href="#"
+      aria-label={`${site.name} — kembali ke atas`}
+    >
+      <img
+        src="/logos/completelogo_lightmode.svg"
+        alt={site.name}
+        width="2250"
+        height="750"
+        class="h-11 w-auto sm:h-12"
+        loading="eager"
+      />
+    </a>
+
+    <nav
+      class="hidden items-center gap-7 text-[12px] font-medium tracking-[0.16em] text-slate-600 uppercase md:flex"
+      aria-label="Navigasi utama"
+    >
+      {
+        navLinks.map((link, i) => (
+          <a
+            class:list={[
+              "transition-colors hover:text-slate-950",
+              i === 0 && "font-semibold text-slate-950",
+            ]}
+            aria-current={i === 0 ? "page" : undefined}
+            href={link.href}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        class="inline-flex items-center gap-2 rounded-full bg-slate-900 py-1.5 pl-3 pr-1.5 text-[10px] font-semibold tracking-wider text-white uppercase shadow-sm transition-all duration-300 hover:bg-brand-700 sm:py-1.5 sm:pl-4 sm:pr-2 sm:text-[11px] sm:tracking-widest"
+        href={wa(waGreeting)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="hidden sm:inline">Hubungi Kami</span>
+        <span class="sm:hidden">Hubungi</span>
+        <span
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white"
+        >
+          <Icon name="arrow_outward" size="text-[13px]" />
+        </span>
+      </a>
+    </div>
+  </div>
+</header>

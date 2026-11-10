@@ -1,0 +1,85 @@
+---
+import { site, social } from "@/data/site";
+---
+
+<section class="relative w-full py-24" id="instagram">
+  <div class="mx-auto max-w-4xl px-6 text-center sm:px-8">
+    <img
+      src="/logos/completelogo_lightmode.svg"
+      alt={site.name}
+      width="2250"
+      height="750"
+      class="mx-auto h-16 w-auto sm:h-20"
+    />
+
+    <span
+      class="mt-8 block text-xs font-semibold tracking-[0.25em] text-brand-700 uppercase"
+    >
+      Instagram
+    </span>
+    <h2
+      class="mt-2 text-3xl font-medium tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+    >
+      Ikuti
+      <span class="font-serif font-normal italic text-brand-700"
+        >Cerita Perjalanan</span
+      >
+      Kami
+    </h2>
+    <p
+      class="mx-auto mt-3 max-w-md text-sm font-light text-slate-600 sm:text-base"
+    >
+      Galeri destinasi terbaru, behind the scene armada eksekutif, dan update
+      paket eksklusif langsung dari lapangan.
+    </p>
+
+    <div class="mt-8 flex justify-center">
+      <a
+        class="group inline-flex items-center gap-3 rounded-full bg-slate-900 py-2 pl-6 pr-2 text-xs font-semibold tracking-widest text-white uppercase shadow-md transition-all duration-300 hover:bg-brand-700"
+        href={social.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4 shrink-0"
+          aria-hidden="true"
+        >
+          <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2"
+          ></rect>
+          <circle cx="12" cy="12" r="4.4"></circle>
+          <circle
+            cx="17.6"
+            cy="6.4"
+            r="1.1"
+            fill="currentColor"
+            stroke="none"
+          ></circle>
+        </svg>
+        <span>{social.handle}</span>
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform duration-200 group-hover:scale-105"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-3.5 w-3.5"
+            aria-hidden="true"
+          >
+            <path d="M7 17L17 7"></path>
+            <path d="M9 7h8v8"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

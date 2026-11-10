@@ -1,0 +1,146 @@
+---
+import { Image } from "astro:assets";
+import Icon from "@/components/Icon.astro";
+import {
+  testimonials,
+  trustMetrics,
+  partners,
+  images,
+} from "@/data/site";
+---
+
+<section class="relative w-full py-16 sm:py-24" id="testimoni">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:linear-gradient(transparent_0%,black_15%,black_85%,transparent_100%)]"
+  >
+    <Image
+      src={images.scenicValley}
+      alt="Lanskap sawah terasering Indonesia berkabut pada saat fajar"
+      widths={[640, 1024, 1376]}
+      sizes="100vw"
+      format="webp"
+      quality={70}
+      loading="lazy"
+      class="h-full w-full object-cover object-center contrast-[1.02] opacity-90 saturate-120"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-sky-950/15 via-transparent to-[#faf9f6]/40"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    <div
+      class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+    >
+      <div>
+        <span
+          class="mb-2 block text-xs font-semibold tracking-[0.25em] text-brand-700 uppercase"
+        >
+          Bukti Integritas &amp; Reputasi
+        </span>
+        <h2
+          class="text-3xl font-medium leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+        >
+          Kepercayaan yang
+          <span class="font-serif font-normal italic text-brand-700"
+            >Teruji Waktu</span
+          >
+        </h2>
+      </div>
+      <div
+        class="glass-card-subtle flex items-center gap-3 self-start rounded-full px-5 py-2.5 sm:self-auto"
+        aria-label="Rating rata-rata 4.9 dari 5 dari lebih dari 1800 klien"
+      >
+        <div class="flex items-center gap-1 text-amber-500">
+          <Icon name="star" size="text-lg" fill />
+          <Icon name="star" size="text-lg" fill />
+          <Icon name="star" size="text-lg" fill />
+          <Icon name="star" size="text-lg" fill />
+          <Icon name="star" size="text-lg" fill />
+        </div>
+        <span class="text-xs font-bold tracking-wide text-slate-900">
+          4.9 / 5.0 Kepuasan 1.800+ Klien
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      {
+        trustMetrics.map((metric) => (
+          <div class="glass-card-subtle flex items-center gap-3 rounded-2xl p-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-700/10 text-brand-700">
+              <Icon name={metric.icon} size="text-lg" />
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-slate-900">{metric.title}</p>
+              <p class="text-[11px] font-light text-slate-500">{metric.note}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {
+        testimonials.map((t) => (
+          <figure class="glass-card-subtle group flex flex-col justify-between rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-brand-500/40 hover:shadow-2xl">
+            <div>
+              <div class="mb-4 flex items-center justify-between">
+                <span class="block leading-none font-serif text-4xl text-slate-300 transition-colors duration-300 group-hover:text-brand-700" aria-hidden="true">
+                  &#8220;
+                </span>
+                <div class="flex items-center gap-1.5 rounded-full bg-slate-900/5 px-3 py-1 text-[10px] font-semibold tracking-wider text-slate-700 uppercase transition-colors duration-300 group-hover:bg-brand-700/10 group-hover:text-brand-700">
+                  <span class="h-1.5 w-1.5 rounded-full bg-brand-700" />
+                  <span>{t.badge}</span>
+                </div>
+              </div>
+              <blockquote class="text-sm leading-relaxed font-light italic text-slate-700 sm:text-base">
+                &#8220;{t.quote}&#8221;
+              </blockquote>
+            </div>
+            <figcaption class="mt-8 flex items-center gap-3 border-t border-slate-200/70 pt-4">
+              <div
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-medium text-white shadow-xs transition-transform duration-300 group-hover:scale-105"
+                aria-hidden="true"
+              >
+                {t.initials}
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 transition-colors duration-300 group-hover:text-brand-700">
+                  {t.name}
+                </div>
+                <div class="text-xs font-light text-slate-500">{t.role}</div>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <div
+      class="glass-card-subtle flex flex-col items-center justify-between gap-6 rounded-3xl p-6 sm:p-8 md:flex-row"
+    >
+      <div class="shrink-0 text-center md:text-left">
+        <span
+          class="block text-[11px] font-semibold tracking-[0.25em] text-brand-700 uppercase"
+          >Kemitraan Terpercaya</span
+        >
+        <p class="mt-1 font-serif text-base text-slate-900">
+          Dipercaya oleh 50+ Institusi Pendidikan, BUMN &amp; Korporasi
+        </p>
+      </div>
+      <div
+        class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold tracking-wider text-slate-600 uppercase sm:gap-6 md:justify-end"
+      >
+        {
+          partners.map((partner) => (
+            <span class="rounded-full border border-slate-200/80 bg-white/80 px-3.5 py-1.5 shadow-xs">
+              {partner}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

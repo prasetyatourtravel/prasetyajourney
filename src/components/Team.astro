@@ -1,0 +1,50 @@
+---
+import { team, site } from "@/data/site";
+---
+
+<section class="relative w-full py-24" id="tim">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    <div class="mx-auto mb-16 max-w-2xl text-center">
+      <span
+        class="mb-2 block text-xs font-semibold tracking-[0.25em] text-brand-700 uppercase"
+      >
+        Integritas Kepemimpinan
+      </span>
+      <h2
+        class="text-3xl font-medium leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+      >
+        Tim Eksekutif
+        <span class="font-serif font-normal italic text-brand-700"
+          >{site.shortName}</span
+        >
+      </h2>
+      <p class="mt-3 text-sm font-light text-slate-600 sm:text-base">
+        Dedikasi para profesional di balik setiap perjalanan sempurna dan
+        kepuasan pelanggan {site.name}.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        team.map((member) => (
+          <article class="glass-card-subtle group flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:border-slate-300 hover:bg-white hover:shadow-xl">
+            <div>
+              <span class="block text-[11px] font-semibold tracking-wider text-brand-700 uppercase">
+                {member.role}
+              </span>
+              <h3 class="mt-1.5 font-serif text-2xl text-slate-900 transition-colors duration-300 group-hover:text-brand-700">
+                {member.name}
+              </h3>
+              <p class="mt-0.5 text-xs font-medium text-slate-500">
+                {member.roleEn}
+              </p>
+            </div>
+            <p class="mt-6 border-t border-slate-200/70 pt-6 text-sm leading-relaxed font-light text-slate-600">
+              {member.bio}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

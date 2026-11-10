@@ -1,0 +1,52 @@
+---
+import Icon from "@/components/Icon.astro";
+import { faqs } from "@/data/site";
+---
+
+<section class="relative w-full py-24" id="faq">
+  <div class="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
+    <div class="mb-16 text-center">
+      <span
+        class="mb-2 block text-xs font-semibold tracking-[0.25em] text-brand-700 uppercase"
+      >
+        Pusat Informasi
+      </span>
+      <h2
+        class="text-3xl font-medium tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+      >
+        Pertanyaan yang
+        <span class="font-serif font-normal italic text-brand-700"
+          >Sering Diajukan</span
+        >
+      </h2>
+      <p class="mt-3 text-sm font-light text-slate-600 sm:text-base">
+        Pahami lebih jelas seluruh ketentuan reservasi dan komitmen
+        kenyamanan kami.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {
+        faqs.map((faq, i) => (
+          <details
+            class="faq-item glass-card-subtle overflow-hidden rounded-2xl border border-slate-200/90 shadow-sm"
+            id={i === 0 ? "faq-pertama" : undefined}
+          >
+            <summary class="flex cursor-pointer items-center justify-between gap-4 p-6 text-left transition-colors hover:bg-slate-50/50">
+              <span class="text-base font-semibold italic text-slate-900">
+                {faq.question}
+              </span>
+              <Icon
+                name="expand_more"
+                size="shrink-0 faq-icon text-slate-400 transition-transform duration-300"
+              />
+            </summary>
+            <div class="border-t border-slate-100 px-6 pt-4 pb-6 text-sm leading-relaxed font-light text-slate-600">
+              {faq.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,200 @@
+---
+import { Image } from "astro:assets";
+import Icon from "@/components/Icon.astro";
+import { images, heroMinis, site, wa, waGreeting } from "@/data/site";
+---
+
+<section
+  class="relative flex min-h-[940px] w-full flex-col justify-between overflow-hidden pt-28 pb-16 lg:min-h-[1040px]"
+  id="hero"
+>
+  <!-- Backdrop gunung majestik dengan mask fading ke kanvas putih -->
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div
+      class="hero-mountain-mask absolute inset-x-0 top-0 h-[680px] w-full will-change-transform lg:h-[740px]"
+      id="hero-parallax-bg"
+    >
+      <Image
+        src={images.hero}
+        alt="Panorama pegunungan majestik berkabut dilanda cahaya matahari pagi — destinasi perjalanan menuju Nusantara"
+        widths={[640, 1024, 1376]}
+        sizes="100vw"
+        format="webp"
+        quality={80}
+        loading="eager"
+        fetchpriority="high"
+        class="h-[760px] w-full object-cover object-top contrast-[1.02] opacity-90 saturate-120"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-b from-sky-950/15 via-transparent to-[#faf9f6]/40"
+      >
+      </div>
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#faf9f6] via-[#faf9f6]/80 to-transparent"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Tipografi utama & CTA -->
+  <div
+    class="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-4 pt-4 text-center sm:px-8 sm:pt-16"
+  >
+    <div class="mb-4 flex items-center gap-2 sm:mb-6 sm:gap-3">
+      <span class="h-[1px] w-5 bg-slate-400/60 sm:w-8"></span>
+      <span
+        class="text-[10px] font-semibold tracking-[0.25em] text-slate-700 uppercase sm:text-[11px] sm:tracking-[0.3em]"
+      >
+        {site.headlineLabel}
+      </span>
+      <span class="h-[1px] w-5 bg-slate-400/60 sm:w-8"></span>
+    </div>
+
+    <h1
+      class="text-balance max-w-4xl text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 drop-shadow-xs sm:text-5xl sm:leading-[1.05] md:text-7xl lg:text-[82px]"
+    >
+      Embrace the
+      <span class="font-serif font-normal italic text-brand-700"
+        >True Luxury</span
+      >
+      of Nusantara
+    </h1>
+    <p
+      class="text-balance max-w-2xl pt-6 text-xs font-light leading-relaxed text-slate-700 sm:text-base md:text-lg"
+    >
+      {site.tagline}. Kurasi perjalanan eksklusif Study Tour, korporasi, dan
+      liburan keluarga berbalut kenyamanan armada eksekutif berstandar hotel
+      berbintang.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a
+        class="group inline-flex items-center gap-3 rounded-full bg-slate-900 py-2 pl-6 pr-2 text-xs font-semibold tracking-widest text-white uppercase shadow-md transition-all duration-300 hover:bg-brand-700"
+        href="#layanan-destinasi"
+      >
+        <span>Jelajahi Sekarang</span>
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-900 transition-transform duration-200 group-hover:scale-105"
+        >
+          <Icon name="arrow_downward" size="text-[16px]" />
+        </span>
+      </a>
+      <a
+        class="inline-flex items-center gap-2 rounded-full border border-slate-300/80 bg-white/85 px-5 py-3 text-xs font-semibold tracking-wider text-slate-800 uppercase shadow-xs backdrop-blur-md transition-all duration-300 hover:bg-white"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={wa(waGreeting)}
+      >
+        <Icon name="chat" size="text-[18px]" class="text-brand-700" />
+        <span>WhatsApp: {site.phoneDisplay}</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Panel kaca showcase -->
+  <div class="relative z-10 mx-auto mt-12 w-full max-w-6xl px-4 sm:mt-16 sm:px-8">
+    <div
+      class="glass-panel rounded-3xl p-6 transition-transform duration-300 sm:p-8"
+      id="glass-hero-card"
+    >
+      <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-12">
+        <div class="flex flex-col justify-between space-y-4 lg:col-span-4 lg:pr-4">
+          <div class="space-y-2">
+            <div class="flex items-center gap-1.5 text-amber-500" aria-label="Rating 4.9 dari 5">
+              <Icon name="star" size="text-base" fill />
+              <Icon name="star" size="text-base" fill />
+              <Icon name="star" size="text-base" fill />
+              <Icon name="star" size="text-base" fill />
+              <Icon name="star" size="text-base" fill />
+              <span class="ml-1 text-xs font-bold text-slate-900"
+                >4.9 / 5.0</span
+              >
+            </div>
+            <h2 class="font-serif text-xl leading-snug text-slate-900 sm:text-2xl">
+              Pilihan Utama Perjalanan Nyaman &amp; Terpercaya
+            </h2>
+            <p class="text-xs font-light leading-relaxed text-slate-600">
+              Resmi berbadan hukum PT di Jawa Timur dengan armada Jetbus 5
+              &amp; Avante Luxury berstandar eksekutif.
+            </p>
+          </div>
+          <div
+            class="flex items-center justify-between border-t border-slate-200/60 pt-3 text-xs text-slate-500"
+          >
+            <span class="flex items-center gap-1 font-medium text-slate-800">
+              <Icon name="verified" size="text-sm" class="text-brand-700" />
+              SK Kemenkumham RI
+            </span>
+            <span
+              class="text-[11px] font-semibold tracking-wider text-brand-700 uppercase"
+              >100% Legalitas Sah</span
+            >
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:col-span-8">
+          {
+            heroMinis.map((mini) => (
+              <div class="group relative h-48 overflow-hidden rounded-2xl border border-white/60 shadow-sm">
+                <Image
+                  src={mini.img}
+                  alt={mini.alt}
+                  widths={[300, 500]}
+                  sizes="(min-width: 1024px) 240px, 100vw"
+                  format="webp"
+                  quality={75}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                <div class="absolute right-3 bottom-3 left-3 text-white">
+                  <span class="block text-[10px] font-semibold tracking-widest text-sky-300 uppercase">
+                    {mini.label}
+                  </span>
+                  <p class="font-serif text-sm font-medium text-white">
+                    {mini.title}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const parallaxBg = document.getElementById("hero-parallax-bg");
+  const heroCard = document.getElementById("glass-hero-card");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!reduceMotion) {
+    parallaxBg &&
+      window.addEventListener(
+        "scroll",
+        () => {
+          const scrollY = window.scrollY;
+          if (parallaxBg && scrollY < 1200) {
+            parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.28}px, 0)`;
+          }
+        },
+        { passive: true }
+      );
+
+    if (heroCard && window.innerWidth > 768) {
+      heroCard.addEventListener("mousemove", (e) => {
+        const rect = heroCard.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        heroCard.style.transform = `perspective(1000px) rotateX(${-y * 0.008}deg) rotateY(${x * 0.008}deg) translateY(-2px)`;
+      });
+      heroCard.addEventListener("mouseleave", () => {
+        heroCard.style.transform =
+          "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+      });
+    }
+  }
+</script>

@@ -1,0 +1,120 @@
+---
+import { site, social } from "@/data/site";
+const year = new Date().getFullYear();
+const footerLinks = [
+  { label: "Tentang Kami", href: "#tentang" },
+  { label: "Layanan Tur", href: "#layanan-destinasi" },
+  { label: "Katalog Destinasi", href: "#layanan-destinasi" },
+  { label: "Tim Eksekutif", href: "#tim" },
+  { label: "Pusat Bantuan", href: "#faq" },
+  { label: "Instagram", href: social.instagram, external: true },
+];
+---
+
+<footer
+  class="relative z-10 w-full border-t border-slate-200/80 bg-white/95 backdrop-blur-md"
+>
+  <div class="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-12">
+    <div class="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
+      <div class="space-y-4 lg:col-span-4">
+        <a
+          class="group mb-2 inline-flex items-center"
+          href="#"
+          aria-label={`${site.name} — kembali ke atas`}
+        >
+          <img
+            src="/logos/completelogo_lightmode.svg"
+            alt={site.name}
+            width="2250"
+            height="750"
+            class="h-14 w-auto sm:h-16"
+          />
+        </a>
+        <p
+          class="max-w-sm text-xs leading-relaxed font-light text-slate-500 sm:text-sm"
+        >
+          {site.tagline}. Kurasi perjalanan eksklusif dan voyage premium
+          dengan standar kenyamanan, keselamatan, dan dedikasi penuh di setiap
+          rute Nusantara.
+        </p>
+      </div>
+
+      <div class="space-y-2 text-xs lg:col-span-3">
+        <span
+          class="mb-3 block text-[11px] font-semibold tracking-widest text-slate-900 uppercase"
+        >
+          Kantor Operasional
+        </span>
+        <address class="leading-relaxed font-light text-slate-600 not-italic">
+          {site.addressLine}
+        </address>
+        <p class="pt-2 font-medium text-slate-900">
+          <a
+            class="transition-colors hover:text-brand-700"
+            href={`tel:${site.phoneIntl}`}
+            >Telepon / WA: {site.phoneDisplay}</a
+          >
+        </p>
+        <p class="font-light text-slate-600">
+          <a
+            class="transition-colors hover:text-brand-700"
+            href={`mailto:${site.email}`}
+            >{site.email}</a
+          >
+        </p>
+      </div>
+
+      <div class="space-y-2 text-xs lg:col-span-2">
+        <span
+          class="mb-3 block text-[11px] font-semibold tracking-widest text-slate-900 uppercase"
+        >
+          Eksplorasi
+        </span>
+        <ul class="space-y-2 font-light text-slate-600">
+          {
+            footerLinks.map((link) => (
+              <li>
+                <a
+                  class="transition-colors hover:text-brand-700"
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="space-y-3 lg:col-span-3">
+        <span
+          class="mb-3 block text-[11px] font-semibold tracking-widest text-slate-900 uppercase"
+        >
+          Legalitas Badan Usaha
+        </span>
+        <div class="space-y-1 rounded-xl border border-slate-200/80 bg-slate-50 p-4 text-xs">
+          <p class="font-semibold text-slate-900">SK Kemenkumham RI</p>
+          <p class="font-light text-slate-500">
+            Akta Notaris, NIB Berlisensi, dan NPWP Badan Terdaftar Penuh.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-8 text-xs font-light text-slate-500 sm:flex-row"
+    >
+      <p>© {year} {site.name}. Hak Cipta Dilindungi.</p>
+      <div class="flex items-center gap-6">
+        <span class="cursor-pointer transition-colors hover:text-slate-900"
+          >Kebijakan Privasi</span
+        >
+        <span class="cursor-pointer transition-colors hover:text-slate-900"
+          >Syarat &amp; Ketentuan</span
+        >
+      </div>
+    </div>
+  </div>
+</footer>
